@@ -7,12 +7,42 @@ let cuits = [];
 app.use(express.json());
 
 app.get('/cuits', (req, res) => {
+  // Auth checks
+  const auth = req.headers['authorization'];
+  if (!auth) {
+    return res.status(403).send("Authorization required");
+  }
+
+  const [authType, screenName] = auth.split(' ', 2);
+  if (authType != 'ScreenName') {
+    return res.status(403).send('ScreenName authorization type required');
+  }
+  
   res.send(cuits);
 });
 
-app.post('/cuits', (req, res) => {
-  const body = req.body;
+app.get('/cuits/:cuitId', (req, res) => {
+  // Auth checks
+  const auth = req.headers['authorization'];
+  if (!auth) {
+    return res.status(403).send("Authorization required");
+  }
 
+  const [authType, screenName] = auth.split(' ', 2);
+  if (authType != 'ScreenName') {
+    return res.status(403).send('ScreenName authorization type required');
+  }
+  
+  const cuitId = req.params.cuitId;
+  const cuit = cuits.find((cuit) => cuit.id == cuitId)
+  if (!cuit) {
+    return res.status(404).send('Not found');
+  }
+
+  return res.send(cuit);
+});
+
+app.post('/cuits', (req, res) => {
   // Auth checks
   const auth = req.headers['authorization'];
   if (!auth) {
@@ -24,6 +54,8 @@ app.post('/cuits', (req, res) => {
     return res.status(403).send('ScreenName authorization type required');
   }
 
+  const body = req.body;
+
   // Validate payload
   if (!body.text) {
     return res.status(400).send('Cuit text required');
@@ -31,7 +63,6 @@ app.post('/cuits', (req, res) => {
 
   // Dup checks
   const found = cuits.find(cuit => cuit.author == screenName);
-  console.log('Found', found);
   if (found && found.text == body.text) {
     return res.status(409).send('Duplicate cuit');
   }

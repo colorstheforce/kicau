@@ -3,6 +3,7 @@
 ### List of cuits
 GET http://localhost:3000/cuits HTTP/1.1
 Accept: application/json
+Authorization: ScreenName nuruddin.ashr
 
 ### Send new cuit nuruddin.ashr
 POST http://localhost:3000/cuits HTTP/1.1
@@ -43,3 +44,8 @@ Authorization: ScreenName nuruddin.ashr
 {
     "cuit": "Good morning everyone"
 }
+
+### Retrieve specific cuit
+GET http://localhost:3000/cuits/1025 HTTP/1.1
+Accept: application/json
+Authorization: ScreenName nuruddin.ashr
