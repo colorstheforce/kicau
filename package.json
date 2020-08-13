@@ -5,11 +5,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Nuruddin Ashr",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "Simplified Twitter Clone",
+  "homepage": "https://github.com/uudashr/kicau",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uudashr/kicau.git"
+  }
 }
