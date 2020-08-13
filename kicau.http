@@ -1,0 +1,45 @@
+# Cuits
+
+### List of cuits
+GET http://localhost:3000/cuits HTTP/1.1
+Accept: application/json
+
+### Send new cuit nuruddin.ashr
+POST http://localhost:3000/cuits HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: ScreenName nuruddin.ashr
+
+{
+    "text": "Good morning everyone"
+}
+
+### Send new cuit dimpy.adira
+POST http://localhost:3000/cuits HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: ScreenName dimpy.adira
+
+{
+    "text": "Yippie.. All test passed"
+}
+
+### Send new cuit muh.rahmat
+POST http://localhost:3000/cuits HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: ScreenName muh.rahmat
+
+{
+    "text": "Flutter makes my live easier"
+}
+
+### Invalid cuit nuruddin.ashr
+POST http://localhost:3000/cuits HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: ScreenName nuruddin.ashr
+
+{
+    "cuit": "Good morning everyone"
+}
