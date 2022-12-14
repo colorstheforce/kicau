@@ -8,7 +8,7 @@
   "author": "Nuruddin Ashr",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {},
   "description": "Simplified Twitter Clone",
